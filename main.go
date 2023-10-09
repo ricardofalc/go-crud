@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/gin-gonic/gin"
+	"github.com/ricardofalc/go-crud/controllers"
 	"github.com/ricardofalc/go-crud/initializers"
 )
 
@@ -16,11 +17,13 @@ func main() {
 	fmt.Println("Hello, World!123")
 
 	r := gin.Default()
-	r.GET("/", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
-	r.Run() // listen and serve on 0.0.0.0:8080
+	r.POST("/posts", controllers.PostsCreate)    // Create
+	r.PUT("/posts/:id", controllers.PostsUpdate) // Update
 
+	r.GET("/posts", controllers.PostsIndex)    // Read
+	r.GET("/posts/:id", controllers.PostsShow) // Read
+
+	r.DELETE("/posts/:id", controllers.PostsDelete) // Delete
+
+	r.Run() // listen and serve on 0.0.0.0:8080
 }

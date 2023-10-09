@@ -1,4 +1,2 @@
-# crud-app
-
-#Live testing
+# Live testing
 ## CompileDaemon -command="./go-crud"

@@ -6,7 +6,7 @@ resource "azurerm_resource_group" "rg_root" {
 }
 
 resource "azurerm_shared_image_gallery" "sig_compute_gallery" {
-  name                = "Azure Compute Gallery"
+  name                = "az_compute_gallery"
   resource_group_name = azurerm_resource_group.rg_root.name
   location            = var.locationName
 
@@ -26,3 +26,17 @@ resource "azurerm_shared_image" "si_base_image" {
     sku       = "win11-22h2-avd"
   }
 }
+
+# resource "azurerm_shared_image_version" "sii_initial_version" {
+#   name                = "0.0.1"
+#   gallery_name        = azurerm_shared_image.si_base_image.gallery_name
+#   image_name          = azurerm_shared_image.si_base_image.name
+#   resource_group_name = azurerm_shared_image.si_base_image.resource_group_name
+#   location            = var.locationName
+#   managed_image_id    = azurerm_shared_image.si_base_image.id
+
+#   target_region {
+#     name                   = azurerm_shared_image.si_base_image.location
+#     regional_replica_count = 0
+#   }
+# }

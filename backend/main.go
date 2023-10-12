@@ -15,7 +15,7 @@ func main() {
 
 	r := gin.Default()
 
-	r.Static("/frontend", "./frontend")
+	r.Static("/frontend", "../frontend")
 
 	r.POST("/posts", controllers.PostsCreate)    // Create
 	r.PUT("/posts/:id", controllers.PostsUpdate) // Update

@@ -15,7 +15,14 @@ func main() {
 
 	r := gin.Default()
 
-	r.Static("/frontend", "../frontend")
+	// Serve the main HTML file from the root path
+	r.LoadHTMLGlob("../frontend/*.html")
+	r.GET("/", func(c *gin.Context) {
+		c.HTML(200, "index.html", nil)
+	})
+
+	// Serve static files from /static
+	r.Static("/static", "../frontend/static")
 
 	r.POST("/posts", controllers.PostsCreate)    // Create
 	r.PUT("/posts/:id", controllers.PostsUpdate) // Update

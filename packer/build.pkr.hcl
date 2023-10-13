@@ -9,7 +9,7 @@ build {
     ]
   }
 
-  //Sysprep
+  //Sysprep the image and wait for it to complete before capturing the image for reuse.
   provisioner "powershell" {
     inline = [
       "# If Guest Agent services are installed, make sure that they have started.",

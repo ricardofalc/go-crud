@@ -15,7 +15,17 @@ func PostsCreate(c *gin.Context) {
 		Body  string
 	}
 
-	c.Bind(&body)
+	// Bind the request data to the 'body' struct
+	if err := c.Bind(&body); err != nil {
+		c.JSON(400, gin.H{"error": err.Error()})
+		return
+	}
+
+	// Validate that title and body are not empty
+	if body.Title == "" || body.Body == "" {
+		c.JSON(400, gin.H{"error": "Title and body cannot be empty"})
+		return
+	}
 
 	// Create post
 	post := models.Post{Title: body.Title, Body: body.Body}
@@ -23,7 +33,7 @@ func PostsCreate(c *gin.Context) {
 	result := initializers.DB.Create(&post)
 
 	if result.Error != nil {
-		c.Status(400)
+		c.JSON(400, gin.H{"error": result.Error.Error()})
 		return
 	}
 

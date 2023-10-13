@@ -2,21 +2,81 @@
 <html>
 <head>
     <title>CRUD App</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #ffffff; /* Text Color Set to #30BAED */
+            font-family: "Poppins", Arial, sans-serif; /* Use Poppins font */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            color: #30BAED; /* Highlight Color */
+            font-weight: bold; /* Make the text bold */
+        }
+
+        label {
+            margin-top: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%; /* Set a fixed width for the input fields */
+            background-color: #444;
+            color: #fff;
+            border: 1px solid #666;
+            padding: 5px;
+            margin-top: 5px;
+            border-radius: 10px; /* Make input fields round */
+        }
+
+        form {
+            max-width: 300px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        button[type="submit"] {
+            background-color: #30BAED; /* Highlight Color */
+            color: #333;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 10px; /* Make the button round */
+            font-weight: bold; /* Make the button text bold */
+        }
+
+        button[type="submit"]:hover {
+            background-color: #98e3ff; /* Lighter Highlight on Hover */
+        }
+
+        /* Include Poppins font from Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+    </style>
 </head>
 <body>
     <h1>Post Request</h1>
     <form id="postForm">
         <label for="title">Title:</label>
         <input type="text" id="title" name="title">
-        <button type="submit">Create</button>
-
-        <br><br><br>
-
+        <br><br>
         <label for="body">Body:</label>
         <input type="text" id="body" name="body">
+        <br><br>
+
         <button type="submit">Create</button>
     </form>
 
     <script src="script.js"></script>
+
+    <script src="feedback.js"></script>
+
+    <div id="feedback"></div>
+
 </body>
 </html>

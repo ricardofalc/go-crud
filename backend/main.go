@@ -22,7 +22,7 @@ func main() {
 	})
 
 	// Serve static files from /static
-	r.Static("/static", "../frontend/static")
+	r.Static("/static", "../frontend/")
 
 	r.POST("/posts", controllers.PostsCreate)    // Create
 	r.PUT("/posts/:id", controllers.PostsUpdate) // Update
